@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Sitebill": "src/"
+            "Backpack\\Realty\\": "src/"
         }
     },
     "extra": {
