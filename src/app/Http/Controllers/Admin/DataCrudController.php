@@ -115,11 +115,13 @@ class DataCrudController extends CrudController
             ]);
             $this->crud->addField([
                 'label' => 'Topic',
-                'type' => 'relationship',
+                'type' => 'select2_nested',
                 'name' => 'topic_id',
                 'entity' => 'topic',
                 'attribute' => 'name',
                 'inline_create' => true,
+                'model' => "Sitebill\Realty\app\Models\Topic", // force foreign key model
+
                 //'ajax' => true,
             ]);
 

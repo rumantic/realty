@@ -75,8 +75,8 @@ class Topic extends Model
 
     public function scopeFirstLevelItems($query)
     {
-        return $query->where('parent_id', '0')
-                    ->orderBy('order', 'ASC');
+        return $query->where('depth', '0')
+            ->orderBy('lft', 'ASC');
     }
 
     /*
