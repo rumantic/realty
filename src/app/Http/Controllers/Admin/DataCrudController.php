@@ -119,7 +119,7 @@ class DataCrudController extends CrudController
                 'name' => 'topic_id',
                 'entity' => 'topic',
                 'attribute' => 'name',
-                //'inline_create' => true,
+                'inline_create' => true,
                 //'ajax' => true,
             ]);
 
