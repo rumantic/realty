@@ -104,7 +104,7 @@ class DataCrudController extends CrudController
             $this->crud->addField([
                 'name' => 'text',
                 'label' => 'Text',
-                'type' => 'text',
+                'type' => 'ckeditor',
                 'placeholder' => 'Your title here',
             ]);
             $this->crud->addField([
