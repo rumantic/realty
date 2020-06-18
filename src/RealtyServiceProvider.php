@@ -9,10 +9,20 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 class RealtyServiceProvider extends ServiceProvider
 {
     /**
+     * Where the route file lives, both inside the package and in the app (if overwritten).
+     *
+     * @var string
+     */
+    public $routeFilePath = '/routes/realty.php';
+
+    /**
      * Register the application services.
      */
     public function register()
     {
+        // setup the routes
+        $this->setupRoutes($this->app->router);
+
         //$this->app->make('Sitebill\Sitebill');
         //$this->app->register('Sitebill\CRUD');
 
@@ -65,6 +75,25 @@ class RealtyServiceProvider extends ServiceProvider
     {
         //$this->loadViewsFrom(__DIR__.'/../resources/views', 'sitebill');
         //$this->loadRoutesFrom(__DIR__.'/../routes/routes.php');
+    }
+
+    /**
+     * Define the routes for the application.
+     *
+     * @param  \Illuminate\Routing\Router  $router
+     * @return void
+     */
+    public function setupRoutes(Router $router)
+    {
+        // by default, use the routes file provided in vendor
+        $routeFilePathInUse = __DIR__.$this->routeFilePath;
+
+        // but if there's a file with the same name in routes/backpack, use that one
+        if (file_exists(base_path().$this->routeFilePath)) {
+            $routeFilePathInUse = base_path().$this->routeFilePath;
+        }
+
+        $this->loadRoutesFrom($routeFilePathInUse);
     }
 
 }
