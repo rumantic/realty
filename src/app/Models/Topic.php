@@ -7,10 +7,10 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 
-class Data extends Model
+class Topic extends Model
 {
     use CrudTrait;
-    //use Sluggable, SluggableScopeHelpers;
+    use Sluggable, SluggableScopeHelpers;
 
     /*
     |--------------------------------------------------------------------------
@@ -18,17 +18,13 @@ class Data extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'data';
+    protected $table = 'topic';
     protected $primaryKey = 'id';
-    public $timestamps = true;
+    // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['topic_id', 'text', 'date_added'];
+    protected $fillable = ['name', 'url', 'parent_id'];
     // protected $hidden = [];
     // protected $dates = [];
-    protected $casts = [
-        'featured'  => 'boolean',
-        'date'      => 'date',
-    ];
 
     /**
      * Return the sluggable configuration array for this model.
@@ -38,8 +34,8 @@ class Data extends Model
     public function sluggable()
     {
         return [
-            'slug' => [
-                'source' => 'slug_or_title',
+            'url' => [
+                'source' => 'url_or_name',
             ],
         ];
     }
@@ -56,14 +52,19 @@ class Data extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function topic()
+    public function parent()
     {
-        return $this->belongsTo('Sitebill\Realty\app\Models\Topic', 'topic_id');
+        return $this->belongsTo('Sitebill\Realty\app\Models\Topic', 'parent_id');
     }
 
-    public function tags()
+    public function children()
     {
-        return $this->belongsToMany('Backpack\NewsCRUD\app\Models\Tag', 'article_tag');
+        return $this->hasMany('Sitebill\Realty\app\Models\Topic', 'parent_id');
+    }
+
+    public function datas()
+    {
+        return $this->hasMany('Sitebill\Realty\app\Models\Data');
     }
 
     /*
@@ -72,11 +73,10 @@ class Data extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function scopePublished($query)
+    public function scopeFirstLevelItems($query)
     {
-        return $query->where('active', '1')
-                    ->where('date_added', '<=', date('Y-m-d'))
-                    ->orderBy('date_added', 'DESC');
+        return $query->where('parent_id', '0')
+                    ->orderBy('order', 'ASC');
     }
 
     /*
@@ -85,14 +85,14 @@ class Data extends Model
     |--------------------------------------------------------------------------
     */
 
-    // The slug is created automatically from the "title" field if no slug exists.
-    public function getSlugOrTitleAttribute()
+    // The slug is created automatically from the "name" field if no slug exists.
+    public function getSlugOrNameAttribute()
     {
         if ($this->slug != '') {
             return $this->slug;
         }
 
-        return $this->title;
+        return $this->name;
     }
 
     /*

@@ -42,23 +42,24 @@ class DataCrudController extends CrudController
             ]);
             $this->crud->addColumn('active');
             $this->crud->addColumn('text');
+            $this->crud->addColumn([
+                'label' => 'Topic',
+                'type' => 'select',
+                'name' => 'topic_id',
+                'entity' => 'topic',
+                'attribute' => 'name',
+                'wrapper'   => [
+                    'href' => function ($crud, $column, $entry, $related_key) {
+                        return backpack_url('topic/'.$related_key.'/show');
+                    },
+                ],
+            ]);
+
             /*
             $this->crud->addColumn([
                 'name' => 'featured',
                 'label' => 'Featured',
                 'type' => 'check',
-            ]);
-            $this->crud->addColumn([
-                'label' => 'Category',
-                'type' => 'select',
-                'name' => 'category_id',
-                'entity' => 'category',
-                'attribute' => 'name',
-                'wrapper'   => [
-                    'href' => function ($crud, $column, $entry, $related_key) {
-                        return backpack_url('category/'.$related_key.'/show');
-                    },
-                ],
             ]);
             $this->crud->addColumn('tags');
 
@@ -112,6 +113,16 @@ class DataCrudController extends CrudController
                 'type' => 'date',
                 'default' => date('Y-m-d'),
             ]);
+            $this->crud->addField([
+                'label' => 'Topic',
+                'type' => 'relationship',
+                'name' => 'topic_id',
+                'entity' => 'topic',
+                'attribute' => 'name',
+                //'inline_create' => true,
+                //'ajax' => true,
+            ]);
+
             /*
             $this->crud->addField([
                 'name' => 'content',
@@ -123,15 +134,6 @@ class DataCrudController extends CrudController
                 'name' => 'image',
                 'label' => 'Image',
                 'type' => 'browse',
-            ]);
-            $this->crud->addField([
-                'label' => 'Category',
-                'type' => 'relationship',
-                'name' => 'category_id',
-                'entity' => 'category',
-                'attribute' => 'name',
-                'inline_create' => true,
-                'ajax' => true,
             ]);
             $this->crud->addField([
                 'label' => 'Tags',
