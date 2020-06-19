@@ -17,5 +17,5 @@ Route::group([
 ], function () {
     Route::crud('data', 'DataCrudController');
     Route::crud('topic', 'TopicCrudController');
-    //Route::crud('tag', 'TagCrudController');
+    Route::crud('client', 'ClientCrudController');
 });
