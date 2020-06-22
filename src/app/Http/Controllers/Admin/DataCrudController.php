@@ -37,6 +37,8 @@ class DataCrudController extends CrudController
         */
         $this->crud->operation('list', function () {
             $this->getEntityColumns();
+            $this->crud->addButton('top', 'list_builder', 'view', 'sitebill_entity::buttons.list_builder', 'end');
+
 
             /*
             $this->crud->addColumn([
