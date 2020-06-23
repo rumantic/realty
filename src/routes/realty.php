@@ -16,7 +16,6 @@ Route::group([
     'middleware' => ['web', 'admin'],
 ], function () {
     Route::crud('data', 'DataCrudController');
-    Route::get('data/list_builder', 'DataCrudController@list_builder');
     Route::crud('topic', 'TopicCrudController');
     Route::crud('client', 'ClientCrudController');
 });
