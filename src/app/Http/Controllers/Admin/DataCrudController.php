@@ -18,6 +18,7 @@ class DataCrudController extends EntityCrudController
         $this->crud->setModel(\Sitebill\Realty\app\Models\Data::class);
         $this->crud->setRoute(config('backpack.base.route_prefix', 'admin').'/data');
         $this->crud->setEntityNameStrings('data', 'data');
+        $this->setEntityRequest(DataRequest::class);
         $this->defaultSetup();
 
         /*
@@ -25,7 +26,6 @@ class DataCrudController extends EntityCrudController
         | LIST OPERATION
         |--------------------------------------------------------------------------
         */
-        $this->setupList();
 
 
         /*
@@ -33,8 +33,6 @@ class DataCrudController extends EntityCrudController
         | CREATE & UPDATE OPERATIONS
         |--------------------------------------------------------------------------
         */
-        $this->setEntityRequest(DataRequest::class);
-        $this->setupCreateAndUpdate();
     }
 
     /**
