@@ -4,7 +4,7 @@ namespace Sitebill\Realty\app\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Sitebill\Entity\app\Http\Controllers\Admin\EntityCrudController;
-use Sitebill\Realty\app\Http\Requests\DataRequest;
+use Sitebill\Entity\app\Http\Requests\EntityRequest;
 
 class ClientCrudController extends EntityCrudController
 {
@@ -30,6 +30,7 @@ class ClientCrudController extends EntityCrudController
         $this->crud->setModel(\Sitebill\Realty\app\Models\Client::class);
         $this->crud->setRoute(config('backpack.base.route_prefix', 'admin').'/client');
         $this->crud->setEntityNameStrings('client', 'clients');
+        $this->setEntityRequest(EntityRequest::class);
         $this->defaultSetup();
 
 
