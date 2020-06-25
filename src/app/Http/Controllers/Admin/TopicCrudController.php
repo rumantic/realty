@@ -4,9 +4,10 @@ namespace Sitebill\Realty\app\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Sitebill\Entity\app\Http\Controllers\Admin\EntityCrudController;
 use Sitebill\Realty\app\Http\Requests\TopicRequest;
 
-class TopicCrudController extends CrudController
+class TopicCrudController extends EntityCrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -21,6 +22,7 @@ class TopicCrudController extends CrudController
         CRUD::setModel("Sitebill\Realty\app\Models\Topic");
         CRUD::setRoute(config('backpack.base.route_prefix', 'admin').'/topic');
         CRUD::setEntityNameStrings('topic', 'topics');
+        //$this->setupDefaults();
     }
 
     protected function setupListOperation()
