@@ -19,3 +19,7 @@ Route::group([
     Route::crud('topic', 'TopicCrudController');
     Route::crud('client', 'ClientCrudController');
 });
+
+Route::get('/', 'Sitebill\Realty\app\Http\Controllers\Frontend\HomeController@index')->defaults('_config', [
+    'view' => 'sitebill_realty::home.index'
+])->name('realty.home.index');

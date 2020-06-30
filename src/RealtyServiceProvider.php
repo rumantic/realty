@@ -73,9 +73,22 @@ class RealtyServiceProvider extends ServiceProvider
      */
     public function boot(Router $router, Dispatcher $event)
     {
-        //$this->loadViewsFrom(__DIR__.'/../resources/views', 'sitebill');
+        $this->loadViewsWithFallbacks();
         //$this->loadRoutesFrom(__DIR__.'/../routes/routes.php');
     }
+
+    public function loadViewsWithFallbacks()
+    {
+        $customBaseFolder = resource_path('views/vendor/sitebill/realty');
+
+        // - first the published/overwritten views (in case they have any changes)
+        if (file_exists($customBaseFolder)) {
+            $this->loadViewsFrom($customBaseFolder, 'sitebill_realty');
+        }
+        // - then the stock views that come with the package, in case a published view might be missing
+        $this->loadViewsFrom(realpath(__DIR__.'/resources/views'), 'sitebill_realty');
+    }
+
 
     /**
      * Define the routes for the application.
