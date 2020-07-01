@@ -5,6 +5,6 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller {
     public function index () {
-        return view('sitebill_realty::home.index');
+        return view('sitebill_realty::home.index', compact('page_title','page_description'));
     }
 }
