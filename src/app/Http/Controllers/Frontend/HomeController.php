@@ -7,7 +7,8 @@ use Sitebill\Realty\app\Models\Data;
 
 class HomeController extends Controller {
     public function index () {
-        $datas = DB::table('data')->skip(10)->take(25)->get();
+        //$datas = DB::table('data')->skip(10)->take(25)->get();
+        $datas = Data::all()->skip(10)->take(25);
         return view('sitebill_realty::home.index', compact('page_title','page_description', 'datas'));
     }
 }

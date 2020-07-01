@@ -12,7 +12,7 @@
             <div class="d-flex flex-column mr-auto">
                 <!--begin: Title-->
                 <div class="d-flex flex-column mr-auto">
-                    <a href="#" class="text-dark text-hover-primary font-size-h4 font-weight-bolder mb-1">Nexa - Next generation SAAS</a>
+                    <a href="#" class="text-dark text-hover-primary font-size-h4 font-weight-bolder mb-1">{{$data->region_id}}</a>
                     <span class="text-muted font-weight-bold">Creates Limitless possibilities</span>
                 </div>
                 <!--end::Title-->
@@ -79,7 +79,7 @@
         </div>
         <!--end::Info-->
         <!--begin::Description-->
-        <div class="mb-10 mt-5 font-weight-bold">I distinguish three main text objectives.First, your objective could be merely to inform people.A second be to persuade people.</div>
+        <div class="mb-10 mt-5 font-weight-bold">{{$data->text}}</div>
         <!--end::Description-->
         <!--begin::Data-->
         <div class="d-flex mb-5">
