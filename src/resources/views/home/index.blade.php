@@ -4,6 +4,7 @@
 
 
 @section('content')
+    @include ('sitebill_realty::realty.list.card')
 @endsection
 
 @section('after_content_widgets')

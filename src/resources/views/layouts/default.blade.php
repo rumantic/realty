@@ -5,14 +5,13 @@
 </head>
 <body class="app flex-row align-items-center">
 
-@yield('header')
+@include('sitebill_realty::layouts.header.index')
 
 <div class="container">
     @yield('content')
 </div>
+@include('sitebill_realty::layouts.footer.footer')
 
-<footer class="app-footer sticky-footer">
-</footer>
 
 @yield('before_scripts')
 @stack('before_scripts')
