@@ -79,7 +79,7 @@
         </div>
         <!--end::Info-->
         <!--begin::Description-->
-        <div class="mb-10 mt-5 font-weight-bold">{{$data->text}}</div>
+        <div class="mb-10 mt-5 font-weight-bold"> {{ \Illuminate\Support\Str::limit($data->text, 150, $end='...') }}</div>
         <!--end::Description-->
         <!--begin::Data-->
         <div class="d-flex mb-5">
