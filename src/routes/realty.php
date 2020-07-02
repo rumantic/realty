@@ -11,6 +11,14 @@
 */
 
 Route::group([
+    'namespace' => 'Sitebill\Realty\app\Http\Controllers\Frontend',
+    'middleware' => ['web'],
+], function () {
+    Route::get('/', 'HomeController@index')->name('realty.home.index');
+});
+
+
+Route::group([
     'namespace' => 'Sitebill\Realty\app\Http\Controllers\Admin',
     'prefix' => config('backpack.base.route_prefix', 'admin'),
     'middleware' => ['web', 'admin'],
@@ -20,6 +28,4 @@ Route::group([
     Route::crud('client', 'ClientCrudController');
 });
 
-Route::get('/', 'Sitebill\Realty\app\Http\Controllers\Frontend\HomeController@index')->defaults('_config', [
-    'view' => 'sitebill_realty::home.index'
-])->name('realty.home.index');
+
