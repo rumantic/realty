@@ -17,6 +17,14 @@ Route::group([
     Route::get('/', 'HomeController@index')->name('realty.home.index');
 });
 
+Route::group([
+    'namespace' => 'Sitebill\Realty\app\Http\Controllers\Frontend',
+    'middleware' => ['web','auth'],
+], function () {
+    Route::get('/profile', 'ProfileController@index')->name('realty.profile.index');
+});
+
+
 
 Route::group([
     'namespace' => 'Sitebill\Realty\app\Http\Controllers\Admin',
