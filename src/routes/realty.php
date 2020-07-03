@@ -1,29 +1,11 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Backpack\NewsCRUD Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are
-| handled by the Backpack\NewsCRUD package.
-|
-*/
-
 Route::group([
     'namespace' => 'Sitebill\Realty\app\Http\Controllers\Frontend',
     'middleware' => ['web'],
 ], function () {
     Route::get('/', 'HomeController@index')->name('realty.home.index');
     Route::get('realty/{id}', 'DataFrontController@show')->name('realty.show');
-});
-
-
-Route::group([
-    'namespace' => 'Sitebill\Realty\app\Http\Controllers\Frontend',
-    'middleware' => ['web','auth'],
-], function () {
-    Route::get('/profile', 'ProfileController@index')->name('realty.profile.index');
 });
 
 
