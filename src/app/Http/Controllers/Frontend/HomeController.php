@@ -10,9 +10,12 @@ class HomeController extends Controller {
     public function index () {
         $data_repository = new DataRepository(app());
 
+
         //$datas = DB::table('data')->skip(10)->take(25)->get();
         //$datas = Data::all()->skip(10)->take(25);
-        $datas = $data_repository->paginate(3, $columns = ['*']);
+        $datas = $data_repository->join_select();
+        //dd($datas);
+        //$datas = $data_repository->paginate(3, $columns = ['*']);
         return view('sitebill_realty::home.index', compact('page_title','page_description', 'datas'));
     }
 }

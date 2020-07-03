@@ -44,7 +44,7 @@
             @endif
         </div>
     </div>
-    <!--div class="d-flex align-items-center">
+    <div class="d-flex align-items-center">
         <select class="form-control form-control-sm text-primary font-weight-bold mr-4 border-0 bg-light-primary" style="width: 75px;">
             <option value="10">10</option>
             <option value="20">20</option>
@@ -52,6 +52,6 @@
             <option value="50">50</option>
             <option value="100">100</option>
         </select>
-        <span class="text-muted">Displaying 10 of 230 records</span>
-    </div-->
+        <span class="text-muted">Displaying {{$paginator->count()}} of {{$paginator->total()}} records</span>
+    </div>
 @endif
