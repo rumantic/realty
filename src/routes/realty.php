@@ -15,7 +15,9 @@ Route::group([
     'middleware' => ['web'],
 ], function () {
     Route::get('/', 'HomeController@index')->name('realty.home.index');
+    Route::get('realty/{id}', 'DataFrontController@show')->name('realty.show');
 });
+
 
 Route::group([
     'namespace' => 'Sitebill\Realty\app\Http\Controllers\Frontend',

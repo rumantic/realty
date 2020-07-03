@@ -12,7 +12,7 @@
             <div class="d-flex flex-column mr-auto">
                 <!--begin: Title-->
                 <div class="d-flex flex-column mr-auto">
-                    <a href="#" class="text-dark text-hover-primary font-size-h4 font-weight-bolder mb-1">{{$data->get_entity('region_id')->title()}} {{$data->region_name}}</a>
+                    <a href="/realty/{{$data->id}}" class="text-dark text-hover-primary font-size-h4 font-weight-bolder mb-1">{{$data->get_entity('region_id')->title()}} {{$data->region_name}}</a>
                     <span class="text-muted font-weight-bold">{{$data->get_entity('city_id')->title()}} {{$data->city_name}}</span>
                 </div>
                 <!--end::Title-->
