@@ -8,6 +8,7 @@
 @include('sitebill_realty::layouts.header.index')
 
 <div class="container">
+
     @yield('content')
 </div>
 @include('sitebill_realty::layouts.footer.footer')

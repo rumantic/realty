@@ -59,7 +59,7 @@ class Data extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function topic()
+    public function topic_id_rel()
     {
         return $this->belongsTo('Sitebill\Realty\app\Models\Topic', 'topic_id');
     }

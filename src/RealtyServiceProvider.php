@@ -20,6 +20,8 @@ class RealtyServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->loadConfigs();
+
         // setup the routes
         $this->setupRoutes($this->app->router);
 
@@ -74,7 +76,6 @@ class RealtyServiceProvider extends ServiceProvider
     public function boot(Router $router, Dispatcher $event)
     {
         $this->loadViewsWithFallbacks();
-        //$this->loadRoutesFrom(__DIR__.'/../routes/routes.php');
     }
 
     public function loadViewsWithFallbacks()
@@ -108,5 +109,11 @@ class RealtyServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom($routeFilePathInUse);
     }
+    public function loadConfigs()
+    {
+        // use the vendor configuration file as fallback
+        $this->mergeConfigFrom(__DIR__.'/config/sitebill/realty.php', 'sitebill.realty');
+    }
+
 
 }
